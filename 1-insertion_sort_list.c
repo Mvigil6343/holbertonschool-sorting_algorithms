@@ -25,6 +25,7 @@ void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2)
  * in ascending order using the Insertion sort algorithm
  * @list: Double pointer to the head of the list
  */
+ 
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *current, *temp;
