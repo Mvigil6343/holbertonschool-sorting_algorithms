@@ -14,7 +14,6 @@ int lomuto(int *array, int low, int high, size_t size)
 	int pivot = array[high];
 	int i = low;
 	int j, temp;
-	size_t k;
 
 	for (j = low; j <= high - 1; ++j)
 	{
@@ -26,9 +25,7 @@ int lomuto(int *array, int low, int high, size_t size)
 
 			if (temp != array[i])
 			{
-				for (k = 0; k < size; k++)
-					printf("%d ", array[k]);
-				printf("\n");
+				print_array(array, size);
 			}
 			++i;
 		}
@@ -39,9 +36,7 @@ int lomuto(int *array, int low, int high, size_t size)
 
 	if (temp != array[i])
 	{
-		for (k = 0; k < size; k++)
-			printf("%d ", array[k]);
-		printf("\n");
+		print_array(array, size);
 	}
 
 	return (i);
