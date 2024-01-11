@@ -1,0 +1,75 @@
+#include "sort.h"
+
+/**
+ * lomuto - Main function
+ * @array: array
+ * @low: int
+ * @high: int
+ * @size: size
+ * Return: i
+ */
+
+int lomuto(int *array, int low, int high, size_t size)
+{
+	int pivot = array[high];
+	int i = low - 1;
+	int j, temp;
+	size_t k;
+
+	for (j = low; j <= high - 1; j++)
+	{
+		if (array[j] <= pivot)
+		{
+			i++;
+			temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+			for (k = 0; k < size; k++)
+				printf("%d ", array[k]);
+			printf("\n");
+		}
+	}
+	temp = array[i + 1];
+	array[i + 1] = array[high];
+	array[high] = temp;
+	for (k = 0; k < size; k++)
+		printf("%d ", array[k]);
+	printf("\n");
+
+	return (i + 1);
+}
+/**
+ * quick_sort_recursive - Main function
+ * @array: array
+ * @low: int
+ * @high: int
+ * @size: size
+ */
+
+void quick_sort_recursive(int *array, int low, int high, size_t size)
+{
+	int pivot_index;
+
+	if (low < high)
+	{
+		pivot_index = lomuto(array, low, high, size);
+		quick_sort_recursive(array, low, pivot_index - 1, size);
+		quick_sort_recursive(array, pivot_index + 1, high, size);
+	}
+}
+/**
+ * quick_sort - Main function
+ * @array: array
+ * @size: size
+ * Retunrn: nothing
+ */
+
+
+void quick_sort(int *array, size_t size)
+{
+	if (array == NULL || size <= 1)
+		return;
+
+	quick_sort_recursive(array, 0, size - 1, size);
+}
+
