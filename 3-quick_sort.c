@@ -23,18 +23,26 @@ int lomuto(int *array, int low, int high, size_t size)
 			temp = array[i];
 			array[i] = array[j];
 			array[j] = temp;
-			for (k = 0; k < size; k++)
-				printf("%d ", array[k]);
-			printf("\n");
+
+			if (temp != array[i])
+			{
+				for (k = 0; k < size; k++)
+					printf("%d ", array[k]);
+				printf("\n");
+			}
 			++i;
 		}
 	}
 	temp = array[i];
 	array[i] = array[high];
 	array[high] = temp;
-	for (k = 0; k < size; k++)
-		printf("%d ", array[k]);
-	printf("\n");
+
+	if (temp != array[i])
+	{
+		for (k = 0; k < size; k++)
+			printf("%d ", array[k]);
+		printf("\n");
+	}
 
 	return (i);
 }
@@ -50,7 +58,7 @@ void quick_sort_recursive(int *array, int low, int high, size_t size)
 {
 	int pivot_index = 0;
 
-	if (high - low > 0)
+	if (low < high)
 	{
 		pivot_index = lomuto(array, low, high, size);
 		quick_sort_recursive(array, low, pivot_index - 1, size);
